@@ -1,3 +1,70 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Page with Navbar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-THIS IS THE HTML FILE
+    <header>
+        <h1>Real-Time Solar-Powered Crab Trap Tracking System</h1>
+    </header>
+
+    <div class="navbar">
+        <h3>Trap Finder</h3>
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#background" onclick="showSection('background')">Background</a>
+        <a href="#design" onclick="showSection('design')">Design</a>
+        <a href="#results" onclick="showSection('results')">Results</a>
+        <a href="#acknowledgments" onclick="showSection('acknowledgments')">Acknowledgements</a>
+    </div>
+
+    <div class="content">
+        <div id="home" class="section active">
+            <h1>Introduction</h1>
+            <p>Welcome </p>
+        </div>
+        <div id="background" class="section">
+            <h1>Background</h1>
+            <h2>Why is our product needed?</h2>
+            <p>Trap Finder provides a reliable, eco-friendly solution 
+                for tracking traps using solar-powered transmitters and a receiver with LoRa technology and GPS</p>
+            <p>Using innovative technology for trap management offers numerous benefits. 
+                It reduces ghost fishing, thereby protecting marine ecosystems. 
+                Additionally, it provides economic savings by enhancing operational efficiency, saving fishers both time and money. 
+                The real-time tracking capability ensures that traps can be easily located and retrieved, further streamlining the fishing process.</p>
+        </div>
+        <div id="design" class="section">
+            <h1>Design</h1>
+            <p>Details about services offered.</p>
+        </div>
+        <div id="results" class="section">
+            <h1>Results</h1>
+            <p>Contact details and form here.</p>
+        </div>
+        
+        <div id="acknowledgments" class="section">
+            <h2>Acknowledgement</h2>
+            <p class="para">
+                We would like to thank Dr. Hong-Chuan Yang for his guidance, mentorship, and invaluable feedback throughout the project, and Glenn Jones from Reach Technologies for his technical expertise, support, and providing the necessary resources to make this project a success.                 
+                Hao Li for their continued support and guidance for the duration of this course.
+            </p>
+            <p class="para">
+                We would also like to acknowledge and respect the lək̓ʷəŋən peoples on whose territory the university 
+                stands and the Songhees, Esquimalt and W̱SÁNEĆ peoples whose historical relationships with the land 
+                continue to this day.
+            </p>
+            <h2>References</h2>
+            <i>
+                [1] Greenpeace International. (2019). Ghost gear: The abandoned fishing nets haunting our oceans. [Online]. Available: <a href="https://issuu.com/greenpeaceinternational/docs/ghost_fishing_gear_report_en_single_page_051119">https://issuu.com/greenpeaceinternational/docs/ghost_fishing_gear_report_en_single_page_051119</a>
+                <br><br>
+            </i>
+        </div>
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
