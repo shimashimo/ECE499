@@ -15,7 +15,7 @@
     <div class="navbar">
         <h3>Trap Finder</h3>
         <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#background" onclick="showSection('background')">Background</a>
+        <a href="#team" onclick="showSection('team')">Team</a>
         <a href="#design" onclick="showSection('design')">Design</a>
         <a href="#results" onclick="showSection('results')">Results</a>
         <a href="#acknowledgments" onclick="showSection('acknowledgments')">Acknowledgements</a>
@@ -25,38 +25,128 @@
         <div id="home" class="section active">
             <h2>Introduction</h2>
             <p> 
-                
+                <br>
                 For the purposes of ECE 499 offered by the UVic Electrical and Computer Engineering department, 
                 our team of three students have designed a project that identifies a real world problem and provides a solution to it. 
                 The project was to be designed and implemented over the course of the Summer 2024 semester. 
-                <br><br>
-                The problem we decided to tackle was "ghost traps", which are lost or abandoned crab traps left in the ocean.
-                Ghost traps continue to catch marine life indiscriminately, 
-                causing significant environmental harm and economic losses.
                 <br>
-                Trap Finder provides a reliable, eco-friendly solution for tracking traps using solar-powered transmitters and a receiver with LoRa technology and GPS.
-                <br>
+                <div class="text-with-image">
+                    <div>
+                    <img src="images/ghost_gear.png" alt="ghost gear" style="width: 250px;">
+                    <div class="text-with-image caption">Credit: Greenpeace International. (2019).</div>
+                    </div>
+                    <p>
+                        The problem we decided to tackle was "ghost traps", which are lost or abandoned crab traps left in the ocean.
+                        Ghost traps continue to catch marine life indiscriminately, causing significant environmental harm and economic losses.
+                    </p>
+                </div>
+                <!-- <div class="image-container">
+                    <img src="images/ghost_gear.png" alt="ghost gear" style="width: 250px;">
+                    <div class="caption">Credit: Greenpeace International. (2019).</div>
+                </div> -->
                 <br>
                 A comprehensive report about the project can be viewed in detail by clicking <a href="./files/final_report.pdf">here</a>.
-            </p>
-        </div>
-        <div id="background" class="section">
-            <h1>Background</h1>
-            <h2>Why is our product needed?</h2>
-            <p>Trap Finder provides a reliable, eco-friendly solution 
-                for tracking traps using solar-powered transmitters and a receiver with LoRa technology and GPS</p>
-            <p>Using innovative technology for trap management offers numerous benefits. 
+                <br><br><br><br><br>
+                <h2>Background</h2>
+                <h4>Why is our product needed?</h4>
+            
+                Trap Finder provides a reliable, eco-friendly solution 
+                for tracking traps using solar-powered transmitters and a receiver with LoRa technology and GPS
+            
+           
+                Using innovative technology for trap management offers numerous benefits. 
                 It reduces ghost fishing, thereby protecting marine ecosystems. 
                 Additionally, it provides economic savings by enhancing operational efficiency, saving fishers both time and money. 
-                The real-time tracking capability ensures that traps can be easily located and retrieved, further streamlining the fishing process.</p>
+                The real-time tracking capability ensures that traps can be easily located and retrieved, further streamlining the fishing process.
+            </p>
+        </div>
+        <div id="team" class="section">
+            <h2>Meet the Team!</h2>
+            <div class="image-container">
+                <img src="images/team_photo.jpg" alt="team photo" style="width:700px;">
+                <div class="caption">
+                     Ewan Chatham - Computer Engineering (Left) &nbsp;&nbsp;&nbsp;&nbsp;
+                     Evan Lee - Electrical Engineering (Middle) &nbsp;&nbsp;&nbsp;&nbsp;
+                     Simon Pollak - Computer Engineering (Right) &nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
         </div>
         <div id="design" class="section">
-            <h1>Design</h1>
-            <p>Details about services offered.</p>
+            <h2>Design</h2>
+            <p>
+                Our project design consists of 3 main parts.
+                <ol>
+                    <li>Communication</li>
+                    <li>Location Tracking</li>
+                    <li>Power Management</li>
+                </ol>
+                <h2>Communication</h2>
+                Communication is implemented using an RFM95 LoRa module with a Feather M0 microcontroller. We have a Transmitter (Trap Node) that is
+                housed in the buoy of the crab trap, floating above water, waiting for a request signal from a Receiver (Boat Node). Once the request is received
+                and the Trap Node matches its ID to the list of IDs sent in the request, it will send back the location data until an acknowledgment is again sent by
+                the Boat Node, signaling the location data has been received.
+                <br>
+                Flowchart diagrams can be seen below to better understand the algorithm.
+                <br>
+                <div class="side-by-side-container">
+                    <div class="image-item">
+                        <img src="images/TrapFlowChart.png" alt="Trap Node Flowchart">
+                        <div class="caption">Flowchart describing the communication process of the Trap Node</div>
+                    </div>
+                    <br>
+                    <div class="image-item">
+                        <img src="images/BoatFlowChart.png" alt="Boat Node Flowchart" style="width:400px;">
+                        <div class="caption">Flowchart describing the communication process of the Boat Node</div>
+                    </div>
+                </div>
+                <h2>Location Tracking</h2>
+                Location Tracking is done by utilizing a U-Blox SAM-M8Q GNSS antenna module. This module perfect for our project as it is highly accurate thanks to concurrent reception of up to 3 GNSS
+                (GPS, Galileo, GLONASS), easy to use, and tiny form factor. [2] The SAM-M8Q also offered different power settings (such as 2 and 4 Hz cyclic tracking and Power Save Modes). [2]
+                <div class="image-container">
+                    <img src="images/SAMM8Q.png" alt="SAM-M8Q" style="width:200px;">
+                    <div class="caption">SAM-M8Q GNSS module</div>
+                </div>
+                <h2>Power Management</h2>
+                Finally, power efficiency was one our top priorities as these Trap Nodes would be out on the water for up to 16 hours at a time, and possibly longer.
+                Lowering the maintenance current draw to a couple tens of mA would result in a smaller battery, cheaper costs and the same amount of time out in the water.
+                <br> Together with solar panels and a DC solar charger, we were able to create a self-sustaining system that could stay out in the water indefinitely.
+                <div class="side-by-side-container">
+                    <div class="image-item">
+                        <img src="images/battery.jpg" alt="1200mAh 3.7V battery" style="width: 200px;">
+                        <div class="caption">1200mAh 3.7V battery <br><i>Photo Credit: https://www.adafruit.com/product/258</i></div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/solar_panels.jpg" alt="2.5W 5V 500mAh solar panels" style="width: 200px;">
+                        <div class="caption">2.5W 5V 500mAh solar panels</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/solar_charger.jpg" alt="Solar Charger" style="width: 200px;">
+                        <div class="caption">DC Solar Charger <br><i>Photo Credit: https://learn.adafruit.com/usb-dc-and-solar-lipoly-charger/</i></div>
+                    </div>
+                </div>
+            </p>
         </div>
         <div id="results" class="section">
-            <h1>Results</h1>
-            <p>Contact details and form here.</p>
+            <h2>Results</h2>
+            <p>
+                Through testing to find the operating battery life of the Trap Node, we found that the normal idle current draw of the system was about ~32mA.
+                We noticed that transmission of data through LoRa was the most costly, as it spikes to about 170mA for roughly 5ms.
+                As the payload we are transmitting is only 21 bytes of the possible 251 bytes, we are saving current by transmitting only crucial data thus cutting down transmission time and current draw.
+                The chart below is data that we measured from the Trap Node in various scenarios of doing its handshake (request, acknowledgement) routine.
+                <div class="image-container">
+                    <img src="images/currentDraw.png" alt="current draw chart" style="width:700px;">
+                    <div class="caption">Chart tracking the current draw for the request, payload, acknowledgement handshaking.</div>
+                </div>
+                Expected lifespan using a 1200mAh battery could be determined. Inclusion of several 5V Solar panels allows the unit to remain active for much longer.
+                Trappers tend to retrieve their traps within hours or days at most, so the following specifications are sufficient when supplemented by solar.
+                <div class="image-container">
+                    <img src="images/AvgCurrentTable.png" alt="current draw table" style="width:500px;">
+                    <div class="caption">Battery life in days of different handshaking scenarios</div>
+                </div>
+                Solar Panels combined to give us a peak current output of ~100mA when testing on a semi-cloudy sunny day. 
+                Panels in parallel did not combine to output a sum of the panel's currents, which we think are due to some back draw in the solar panels, where the other panel acts as a resistor sucking up the additional current output.
+                This could be fixed by implementing some blocking diodes at the output of the solar panels to keep current flow in one direction.
+            </p>
         </div>
         
         <div id="acknowledgments" class="section">
@@ -82,6 +172,8 @@
             <i>
                 [1] Greenpeace International. (2019). Ghost gear: The abandoned fishing nets haunting our oceans. [Online]. Available: <a href="https://issuu.com/greenpeaceinternational/docs/ghost_fishing_gear_report_en_single_page_051119">https://issuu.com/greenpeaceinternational/docs/ghost_fishing_gear_report_en_single_page_051119</a>
                 <br><br>
+
+                [2] "SAM-M8Q Data Sheet," u-blox, Feb. 2019. [Online]. Available: https://content.u-blox.com/sites/default/files/SAM-M8Q_DataSheet_%28UBX-16012619%29.pdf. 	[Accessed: Jun. 10, 2024].
             </i>
         </div>
         </div>
